@@ -34,14 +34,14 @@ export class FormSearchComponent implements OnInit {
     formData.append("nom", this.userForm.value['nom']);
     formData.append("site", this.userForm.value['site']);
     formData.append("typeUser", this.userForm.value['typeUser']);
-    this.http.get('http://prjsymf.cir3-frm-smf-ang-35/api/searchuser?nom=' + this.userForm.value['nom'] + '&site=' + this.userForm.value['site'] + '&typeUser=' + this.userForm.value['typeUser'] ,formData).subscribe((response) => {this.valueRetour = response;},
+    this.http.get('http://localhost:82/api/searchuser?nom=' + this.userForm.value['nom'] + '&site=' + this.userForm.value['site'] + '&typeUser=' + this.userForm.value['typeUser'] ,formData).subscribe((response) => {this.valueRetour = response;},
       (response) => console.log(response))
   }
 
   doGET() {
 
     console.log("GET");
-    let url = `http://prjsymf.cir3-frm-smf-ang-35/api/listeuser`;
+    let url = `http://localhost:82/api/listeuser`;
     //this.http.get(url).subscribe(res => console.log(res.json()));
     this.http.get<any[]>(url).subscribe((response) => {this.valueRetour = response;},
     (error) => {console.log('Erreur ! : ' + error);});

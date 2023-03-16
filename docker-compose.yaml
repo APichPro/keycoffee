@@ -58,7 +58,7 @@ services:
       container_name: angular_nginx
       build: docker/nginx
       volumes:
-        - ./docker/front_ang/dist/Angular-project:/usr/share/nginx/html
+        - ./docker/front_ang/dist/Angular:/usr/share/nginx/html
       ports:
         - "81:80"
         - "443:443"

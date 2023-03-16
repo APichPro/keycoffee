@@ -24,7 +24,7 @@ constructor(private http: HttpClient){}
  doGET() {
 
    console.log("GET");
-   let url = `http://prjsymf.cir3-frm-smf-ang-35/api/listeuser`;
+   let url = `http://localhost:82/api/listeuser`;
    //this.http.get(url).subscribe(res => console.log(res.json()));
    this.http.get<any[]>(url).subscribe((response) => {this.valueRetour = response;},
    (error) => {console.log('Erreur ! : ' + error);});

@@ -30,7 +30,7 @@ constructor(private http: HttpClient, private route: ActivatedRoute){}
    //Recuperation de l'id dans l'URL
    let id = this.route.snapshot.paramMap.get('id');
    console.log("GET");
-   let url = 'http://prjsymf.cir3-frm-smf-ang-35/api/detailcle/' + id;
+   let url = 'http://localhost:82/api/detailcle/' + id;
    //this.http.get(url).subscribe(res => console.log(res.json()));
    this.http.get<any[]>(url).subscribe((response) => {this.valueRetour = response;},
    (error) => {console.log('Erreur ! : ' + error);});
