@@ -22,9 +22,9 @@ class UserRepository extends EntityRepository
     return $this->getEntityManager()
     ->createQuery(
       'SELECT p.id,p.nom,p.prenom,p.actif,t.typeUser,s.site FROM BackBundle:User p
-      INNER JOIN BackBundle:TypeUser t WHERE p.idTypeUser = t.id
+      INNER JOIN BackBundle:TypeUser t
       INNER JOIN BackBundle:Site s
-      WHERE p.idSite = s.id ORDER BY p.nom'
+      WHERE p.idSite = s.id AND p.idTypeUser = t.id ORDER BY p.nom'
       )
       ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
     }
@@ -41,9 +41,9 @@ class UserRepository extends EntityRepository
         'SELECT p.id,p.nom,p.prenom,p.actif,t.typeUser,s.site FROM BackBundle:User p
         INNER JOIN BackBundle:TypeUser t WITH p.idTypeUser = t.id
         INNER JOIN BackBundle:Site s WITH p.idSite = s.id
-        INNER JOIN BackBundle:Affecte a WHERE a.idUser = p.id
-        INNER JOIN BackBundle:Cle c WHERE a.idCle = c.id
-        WHERE a.idUser = p.id ORDER BY p.nom'
+        INNER JOIN BackBundle:Affecte a
+        INNER JOIN BackBundle:Cle c
+        WHERE a.idUser = p.id AND a.idCle = c.id AND a.idUser = p.id ORDER BY p.nom'
         )
         ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
       }
@@ -62,9 +62,10 @@ class UserRepository extends EntityRepository
           ->createQuery(
             'SELECT p.id,p.nom,p.prenom,p.actif,p.created,
             p.updated,t.typeUser,s.site
-            FROM BackBundle:User p INNER JOIN BackBundle:TypeUser t WHERE p.idTypeUser = t.id
+            FROM BackBundle:User p 
+            INNER JOIN BackBundle:TypeUser t
             INNER JOIN BackBundle:Site s
-            WHERE p.idSite = s.id AND p.id = :id'
+            WHERE p.idSite = s.id AND p.id = :id AND p.idTypeUser = t.id'
             )->setParameter("id", $id)
             ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
           }
@@ -85,9 +86,9 @@ class UserRepository extends EntityRepository
               'SELECT p.id,p.nom,p.prenom,p.actif,p.created,
               p.updated,t.typeUser,s.site
               FROM BackBundle:User p
-              INNER JOIN BackBundle:TypeUser t WHERE p.idTypeUser = t.id
+              INNER JOIN BackBundle:TypeUser t
               INNER JOIN BackBundle:Site s
-              WHERE p.idSite = s.id AND p.id = :id'
+              WHERE p.idSite = s.id AND p.id = :id AND p.idTypeUser = t.id'
               )->setParameter("id", $id)
               ->getOneOrNullResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
             }
@@ -105,10 +106,12 @@ class UserRepository extends EntityRepository
             return $this->getEntityManager()
             ->createQuery('SELECT p.id,c.id,a.id,p.nom,p.prenom,p.actif,c.numCle,c.dateCreation,c.dateArret,a.dateAffectation , a.dateSuppression,s.site,t.typeUser,a.created,a.updated
               FROM BackBundle:User p
-              INNER JOIN BackBundle:Affecte a WHERE a.idUser = p.id
-              INNER JOIN BackBundle:Cle c WHERE a.idCle = c.id  AND c.id = :id
-              INNER JOIN BackBundle:TypeUser t WHERE p.idTypeUser = t.id
-              INNER JOIN BackBundle:Site s WHERE p.idSite = s.id ORDER BY a.dateAffectation')
+              INNER JOIN BackBundle:Affecte a
+              INNER JOIN BackBundle:Cle c
+              INNER JOIN BackBundle:TypeUser t 
+              INNER JOIN BackBundle:Site s 
+              WHERE p.idSite = s.id AND a.idUser = p.id AND a.idCle = c.id AND c.id = :id AND p.idTypeUser = t.id
+              ORDER BY a.dateAffectation')
               ->setParameter("id", $id)
               ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
             }

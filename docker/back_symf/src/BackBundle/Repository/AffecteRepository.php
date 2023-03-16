@@ -41,8 +41,8 @@ class AffecteRepository extends EntityRepository
       return $this->getEntityManager()
       ->createQuery(
         'SELECT p.id,p.dateAffectation,p.dateSuppression,c.numCle,u.nom,u.prenom FROM BackBundle:Affecte p
-        INNER JOIN   BackBundle:Cle c WHERE c.id = p.idCle
-        INNER JOIN   BackBundle:User u  WHERE u.id = p.idUser'
+        INNER JOIN   BackBundle:Cle c
+        INNER JOIN   BackBundle:User u  WHERE u.id = p.idUser AND c.id = p.idCle'
         )
         ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
       }
@@ -59,8 +59,8 @@ class AffecteRepository extends EntityRepository
         return $this->getEntityManager()
         ->createQuery(
           'SELECT p.id, p.dateAffectation,p.dateSuppression,c.numCle,u.nom,u.prenom FROM BackBundle:Affecte p
-          INNER JOIN   BackBundle:Cle c WHERE c.id = p.idCle
-          INNER JOIN   BackBundle:User u  WHERE u.id = p.idUser AND p.id = :id'
+          INNER JOIN   BackBundle:Cle c
+          INNER JOIN   BackBundle:User u  WHERE u.id = p.idUser AND p.id = :id AND c.id = p.idCle'
           )->setParameter("id", $id)
           ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
         }
@@ -76,8 +76,8 @@ class AffecteRepository extends EntityRepository
           return $this->getEntityManager()
           ->createQuery(
             'SELECT p.id, p.dateAffectation,p.dateSuppression, p.created, p.updated,c.numCle,u.nom,u.prenom FROM BackBundle:Affecte p
-            INNER JOIN   BackBundle:Cle c WHERE c.id = p.idCle
-            INNER JOIN   BackBundle:User u  WHERE u.id = p.idUser AND p.id = :id')
+            INNER JOIN   BackBundle:Cle c
+            INNER JOIN   BackBundle:User u  WHERE u.id = p.idUser AND p.id = :id AND c.id = p.idCle')
             ->setParameter("id", $id)
             ->getOneOrNullResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
           }

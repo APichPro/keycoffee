@@ -87,12 +87,13 @@ class CleRepository extends EntityRepository
           return $this->getEntityManager()
           ->createQuery("SELECT c.id,c.numCle,c.montantInitial,c.commentaire,c.dateArret,c.dateCreation,a.dateAffectation,a.dateSuppression,CASE WHEN IDENTITY(c .idEtat) IS NULL THEN 'Active' ELSE e.causeArret END AS etat
           FROM BackBundle:Cle c
-          INNER JOIN BackBundle:Affecte a WHERE a.idCle = c.id
+          INNER JOIN BackBundle:Affecte a
           LEFT JOIN BackBundle:Etat e
           WITH c.idEtat = e.id OR e.id IS NULL
-          INNER JOIN BackBundle:User p WHERE a.idUser = p.id  AND p.id = :id
-          INNER JOIN BackBundle:TypeUser t WHERE p.idTypeUser = t.id
-          INNER JOIN BackBundle:Site s WHERE p.idSite = s.id
+          INNER JOIN BackBundle:User p
+          INNER JOIN BackBundle:TypeUser t
+          INNER JOIN BackBundle:Site s 
+          WHERE a.idUser = p.id  AND p.id = :id AND p.idSite = s.id AND p.idTypeUser = t.id AND a.idCle = c.id
           ORDER BY a.dateAffectation")
           ->setParameter("id", $id)
           ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
@@ -154,9 +155,10 @@ class CleRepository extends EntityRepository
                 ->createQuery(
                   'SELECT t.typeUser ,COUNT(c.id) AS nb
                   FROM BackBundle:Cle c
-                  INNER JOIN BackBundle:Affecte a WHERE a.idCle = c.id
-                  INNER JOIN BackBundle:User p WHERE a.idUser = p.id
-                  INNER JOIN BackBundle:TypeUser t WHERE p.idTypeUser = t.id
+                  INNER JOIN BackBundle:Affecte a
+                  INNER JOIN BackBundle:User p 
+                  INNER JOIN BackBundle:TypeUser t
+                  WHERE p.idTypeUser = t.id AND a.idUser = p.id AND a.idCle = c.id
                   GROUP BY t.typeUser')
                   ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
                 }
@@ -171,9 +173,10 @@ class CleRepository extends EntityRepository
                   return $this->getEntityManager()
                   ->createQuery(
                     'SELECT IFNULL(COUNT(c), 0) AS nb ,s.site FROM BackBundle:Cle c
-                    INNER JOIN BackBundle:Affecte a WHERE a.idCle = c.id
-                    INNER JOIN BackBundle:User p WHERE a.idUser = p.id
-                    INNER JOIN BackBundle:Site s WHERE p.idSite = s.id
+                    INNER JOIN BackBundle:Affecte a
+                    INNER JOIN BackBundle:User p
+                    INNER JOIN BackBundle:Site s 
+                    WHERE a.idCle = c.id AND a.idUser = p.id AND p.idSite = s.id
                     GROUP BY s.site ')
                     ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
                   }
