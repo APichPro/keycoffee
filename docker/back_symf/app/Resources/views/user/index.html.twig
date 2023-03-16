@@ -1,0 +1,41 @@
+{% include 'base.html.twig' %}
+{% block body %}
+
+<link rel="stylesheet" href="{{ asset('css/style_user.css') }}" type="text/css"/>
+    <h1>Liste des Utilisateurs</h1>
+    <table class="list">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Actif</th>
+                <th>Type d'Utilisateur</th>
+                <th>Site</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for user in users %}
+            <tr>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{% if user.actif %}Oui{% else %}Non{% endif %}</td>
+                <td>{{ user.typeUser }}</td>
+                <td>{{ user.site }}</td>
+
+                <td>
+                    <ul>
+                        <a href="{{ path('user_show', { 'id': user.id }) }}" > <input class="boutton_1" id="margin" type="button" value="Plus de détails"></a>
+                        <a href="{{ path('user_edit', { 'id': user.id }) }}" > <input class="boutton_1" type="button" value="Modifier"></a>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div id="box">
+        <br>
+    <a href="{{ path('user_new') }}"><input id="boutton" type="button" value="Créer un nouvel utilisateur"></a>
+    </div>
+{% endblock %}  
+{% include 'footer.html.twig' %}

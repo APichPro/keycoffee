@@ -1,0 +1,24 @@
+{% include 'base.html.twig' %}
+{% block body %}
+<link rel="stylesheet" href="{{ asset('css/style_etat_show.css') }}" type="text/css"/>
+
+    <h1>Site</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ site.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom du site</th>
+                <td>{{ site.site }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <a href="{{ path('site_index') }}"><input id="boutton" type="button" value="Revenir a la liste"></a>
+    <br><br>
+    <a href="{{ path('site_edit', { 'id': site.id }) }}"> <input id="boutton" type="button" value="Modifier"></a>
+{% endblock %}
+{% include 'footer.html.twig' %}

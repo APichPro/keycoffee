@@ -1,0 +1,63 @@
+{% include 'base.html.twig' %}
+
+<link rel="stylesheet" href="{{ asset('css/style_affecte.css') }}" type="text/css"/>
+
+{% block body %}
+    <h1>Edition d'affectation</h1>
+
+    <div id="container">
+
+    {{ form_start(edit_form) }}
+    <div class="form-box">
+        <div class="form-label">
+            {{ form_label(edit_form.dateAffectation) }} :
+        </div>
+        <div class="form-widget">
+            {{ form_widget(edit_form.dateAffectation) }}
+        </div>
+    </div>
+
+    <div class="form-box">
+        <div class="form-label">
+            {{ form_label(edit_form.dateSuppression) }} :
+        </div>
+        <div class="form-widget">
+            {{ form_widget(edit_form.dateSuppression) }}
+        </div>
+    </div>
+
+    <div class="form-box">
+        <div class="form-label">
+            {{ form_label(edit_form.idCle) }} :
+        </div>
+        <div class="form-widget">
+            {{ form_widget(edit_form.idCle) }}
+        </div>
+    </div>
+
+    <div class="form-box">
+        <div class="form-label">
+            {{ form_label(edit_form.idUser) }} :
+        </div>
+        <div class="form-widget">
+            {{ form_widget(edit_form.idUser) }}
+        </div>
+    </div>
+
+    </div>
+
+    <div class="form-box">
+        <input id="boutton" type="submit" value="Modifier" />
+        {{ form_end(edit_form) }}
+    </div>
+    <br>
+    <div class="form-box">
+        {{ form_start(delete_form) }}
+        <input id="boutton" type="submit" value="Supprimer cet affectation" onclick="if(!confirm('Etes vous sure de vouloir supprimer cette affectation ?')) { return false; }" >
+        {{ form_end(delete_form) }}
+    </div>
+
+        <br>
+        <a href="{{ path('affecte_index') }}"><input id="boutton" type="button" value="Revenir a la liste"></a>
+{% endblock %}
+{% include 'footer.html.twig' %}

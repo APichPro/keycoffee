@@ -1,0 +1,33 @@
+{% include 'base.html.twig' %}
+{% block body %}
+<link rel="stylesheet" href="{{ asset('css/style_etat.css') }}" type="text/css"/>
+
+
+    <h1>Liste des sites</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>site</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for site in sites %}
+            <tr>
+                <td><a href="{{ path('site_show', { 'id': site.id }) }}">{{ site.id }}</a></td>
+                <td>{{ site.site }}</td>
+                <td>
+                     <ul>
+            <a href="{{ path('site_show', { 'id': site.id }) }}" > <input class="boutton_1" id="margin" type="button" value="Plus de détails"></a>
+            <a href="{{ path('site_edit', { 'id': site.id }) }}" > <input class="boutton_1" type="button" value="Modifier"></a>
+        </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{{ path('site_new') }}"><input id="boutton" type="button" value="Créer un nouveau site"></a>
+
+{% endblock %}
+{% include 'footer.html.twig' %}

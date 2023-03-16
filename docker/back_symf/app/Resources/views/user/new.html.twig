@@ -1,0 +1,79 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="stylesheet" href="{{ asset('css/style_user.css') }}" type="text/css"/>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+
+    <div id="oui">
+
+        {% include 'base.html.twig' %}
+
+    <h1>Nouveau</h1>
+    <div id="oui">
+
+    <div id="container">
+    
+        {{  form_start(form)}}
+        <div class="form-box">
+            <div class="form-label">
+                {{ form_label(form.nom) }} :
+            </div>
+            <div class="form-widget">
+                {{ form_widget(form.nom)}}
+            </div>
+        </div>
+
+        <div class="form-box">
+            <div class="form-label">
+                {{ form_label(form.prenom) }} :
+            </div>
+            <div class="form-widget">
+                {{ form_widget(form.prenom)}}
+            </div>
+        </div>
+
+        <div class="form-box">
+            <div class="form-label">
+                {{ form_label(form.actif) }} :
+            </div>
+            <div class="form-widget">
+                {{ form_widget(form.actif)}}
+            </div>
+        </div>
+
+        <div class="form-box">
+            <div class="form-label">
+                {{ form_label(form.idSite) }} :
+            </div>
+            <div class="form-widget">
+                {{ form_widget(form.idSite)}}
+            </div>
+        </div>
+
+        <div class="form-box">
+            <div class="form-label">
+                {{ form_label(form.idTypeUser) }} :
+            </div>
+            <div class="form-widget">
+                {{ form_widget(form.idTypeUser)}}
+            </div>
+        </div>
+        </div>
+
+        <div class="form-box">
+            <input id="boutton" type="submit" value="Créer un nouvel utilisateur" />
+            {{ form_end(form) }}
+        </div>
+
+        <br>
+        <a href="{{ path('user_index') }}"><input id="boutton" type="button" value="Revenir a la liste"></a>
+
+    
+    </body>
+</html>
+{% include 'footer.html.twig' %}

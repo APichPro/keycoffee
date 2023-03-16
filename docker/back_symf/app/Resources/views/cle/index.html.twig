@@ -1,0 +1,45 @@
+{% include 'base.html.twig' %}
+{% block body %}
+
+<link rel="stylesheet" href="{{ asset('css/style_cle.css') }}" type="text/css"/>
+
+    <h1>Liste des clés</h1>
+
+    <div class="container">
+    <table>
+        <thead>
+            <tr>
+
+                <th>Numéro de clé</th>
+                <th>Montant Initial</th>
+                <th>Etat</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for cle in cles %}
+            <tr>
+                <td>{{ cle.numCle }}</td>
+                <td>{{ cle.montantInitial }}</td>
+                {% if cle.etat == 'Active' %}
+                    <td style="background-color:green;">{{ cle.etat }}</td>
+                {% else %}
+                    <td style="background-color:red;">{{ cle.etat }}</td>
+                {% endif %}
+                <td>
+                    <ul>
+                        <a href="{{ path('cle_show', { 'id': cle.id }) }}" > <input class="boutton_1" id="margin" type="button" value="Plus de détails"></a>
+                        <a href="{{ path('cle_edit', { 'id': cle.id }) }}" > <input class="boutton_1" type="button" value="Modifier"></a>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <br>
+    <a href="{{ path('cle_new') }}"><input id="boutton" type="button" value="Créer une nouvelle clé"></a>
+
+
+{% endblock %}
+{% include 'footer.html.twig' %}

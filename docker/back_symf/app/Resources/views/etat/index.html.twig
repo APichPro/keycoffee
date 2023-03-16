@@ -1,0 +1,31 @@
+{% include 'base.html.twig' %}
+{% block body %}
+<link rel="stylesheet" href="{{ asset('css/style_etat.css') }}" type="text/css"/>
+
+    <h1>Liste des états possibles</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Cause arret</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etat in etats %}
+            <tr>
+                <td><a href="{{ path('etat_show', { 'id': etat.id }) }}">{{ etat.id }}</a></td>
+                <td>{{ etat.causeArret }}</td>
+                <td>
+                     <ul>
+            <a href="{{ path('etat_show', { 'id': etat.id }) }}" > <input class="boutton_1" id="margin" type="button" value="Plus de détails"></a>
+            <a href="{{ path('etat_edit', { 'id': etat.id }) }}" > <input class="boutton_1" type="button" value="Modifier"></a>
+        </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{{ path('etat_new') }}"><input id="boutton" type="button" value="Créer un nouvel état"></a>
+{% endblock %}
+{% include 'footer.html.twig' %}

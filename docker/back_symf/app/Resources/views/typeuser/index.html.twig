@@ -1,0 +1,31 @@
+{% include 'base.html.twig' %}
+{% block body %}
+<link rel="stylesheet" href="{{ asset('css/style_etat.css') }}" type="text/css"/>
+    <h1>Liste des types d'utilisateurs</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Type d'utilisateur</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for typeuser in typeusers %}
+            <tr>
+                <td><a href="{{ path('typeuser_show', { 'id': typeuser.id }) }}">{{ typeuser.id }}</a></td>
+                <td>{{ typeuser.typeUser }}</td>
+
+    <td>
+                     <ul>
+            <a href="{{ path('typeuser_show', { 'id': typeuser.id }) }}" > <input class="boutton_1" id="margin" type="button" value="Plus de détails"></a>
+            <a href="{{ path('typeuser_edit', { 'id': typeuser.id }) }}" > <input class="boutton_1" type="button" value="Modifier"></a>
+        </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{{ path('typeuser_new') }}"><input id="boutton" type="button" value="Créer un nouveau type d'utilisateur"></a>
+{% endblock %}
+{% include 'footer.html.twig' %}

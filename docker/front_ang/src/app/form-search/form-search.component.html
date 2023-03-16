@@ -1,0 +1,43 @@
+<h2>Formulaire de recherche</h2>
+<div id="container">  
+    <form (ngSubmit)="register()" [formGroup]="userForm" method="GET">       
+        <div>      
+            <div class="form-label"><label>Nom</label></div>    
+            <div class="form-widget"><input formControlName="nom" ></div>    
+        </div>    
+        <div>      
+            <div class="form-label"><label>Site</label></div>    
+            <div class="form-widget"><input formControlName="site" ></div>   
+        </div>    
+        <div>      
+            <div class="form-label"><label>TypeUser</label></div>    
+            <div class="form-widget"><input formControlName="typeUser" ></div>
+        </div>     
+        <br>          
+        <button type="submit" id="boutton" >Valider</button>  
+    </form>
+</div>
+
+<body>
+    <br>
+    <div id="box_home">
+     <h1>Liste des utilisateurs</h1>
+   </div>
+    <table>
+    <tr>
+    <td>Nom</td><td>Prenom</td><td>Actif</td><td>Type d'Utilisateur</td><td>Localisation</td>
+    </tr>
+   
+    <tr *ngFor="let users of valueRetour">
+    <td>{{ users.nom }}</td>
+    <td>{{ users.prenom }}</td>
+    <td>{{ users.actif }}</td>
+    <td>{{ users.typeUser }}</td>
+    <td>{{ users.site }}</td>
+   
+    <td>
+       <a routerLink='../detailuser/{{ users.id }}' > <input id="boutton" type="button" value="Plus de détails"></a>
+     </td>
+    </tr>
+   </table>
+</body>

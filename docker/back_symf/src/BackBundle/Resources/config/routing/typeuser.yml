@@ -1,0 +1,31 @@
+typeuser_index:
+    path:     /
+    defaults: { _controller: "BackBundle:TypeUser:showall" }
+    methods:  GET
+
+typeuser_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackBundle:TypeUser:show" }
+    methods:  GET
+
+typeuser_new:
+    path:     /new
+    defaults: { _controller: "BackBundle:TypeUser:new" }
+    methods:  [GET, POST]
+
+typeuser_newForTypeUser:
+    path:     /new/{id}
+    defaults: { _controller: "BackBundle:TypeUser:new" }
+    methods:  [GET, POST]
+    requirements:
+      id: '\d+'
+
+typeuser_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackBundle:TypeUser:edit" }
+    methods:  [GET, POST]
+
+typeuser_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackBundle:TypeUser:delete" }
+    methods:  DELETE

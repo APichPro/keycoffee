@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>CoffeeKey</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css"/>
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+</style>
+<body>
+
+  <div class="w3-top">
+    <div class="w3-bar w3-black w3-card">
+      <img class="w3-bar-item" src="{{ asset('image/COFFEEKEY.jpg') }}"   height="50">
+      <a href="{{ path('back_homepage')}}" class="w3-bar-item w3-button w3-padding-large">COFFEEKEY</a>
+      <a href="{{ path('user_index')}}" class="w3-bar-item w3-button w3-padding-large">UTILISATEUR</a>
+      <a href="{{ path('cle_index')}}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CLE</a>
+      <a href="{{ path('affecte_index')}}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">AFFECTATION</a>
+      <a href="{{ path('etat_index')}}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ETAT</a>
+      <a href="{{ path('site_index')}}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">SITE</a>
+      <a href="{{ path('typeuser_index')}}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">TYPE D'UTILISATEUR</a>
+      <a href="{{ path('back_stat')}}" class="w3-bar-item w3-button w3-padding-large">STATISTIQUE</a>
+    </div>
+  </div>
+
+  <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  </div>
+  <div class="w3-content" style="max-width:2000px;margin-top:46px">

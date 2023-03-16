@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BackBundle\Entity\Affecte" table="affecte"
+    repository-class="BackBundle\Repository\AffecteRepository">
+    <indexes>
+      <index name="affecte_cle_FK" columns="id_cle"/>
+      <index name="affecte_user0_FK" columns="id_user"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="dateAffectation" type="date" column="date_affectation" nullable="false"/>
+    <field name="dateSuppression" type="date" column="date_suppression" nullable="false"/>
+    <field name="created" type="datetime" column="created" nullable="false"/>
+    <field name="updated" type="datetime" column="updated" nullable="false"/>
+    <many-to-one field="idCle" target-entity="Cle" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_cle" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idUser" target-entity="User" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_user" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

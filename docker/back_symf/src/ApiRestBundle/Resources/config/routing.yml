@@ -1,0 +1,33 @@
+api_rest_homepage:
+    path:     /
+    defaults: { _controller: ApiRestBundle:Default:index }
+api_rest_listecle:
+    path:     /listecle
+    defaults: { _controller: ApiRestBundle:Default:listecle }
+api_rest_detailcle:
+    path:     /detailcle/{id}
+    defaults: { _controller: ApiRestBundle:Default:detailcle }
+    requirements:
+      id: '\d+'
+api_rest_listeuser:
+    path:     /listeuser
+    defaults: { _controller: ApiRestBundle:Default:listeuser }
+api_rest_detailuser:
+    path:     /detailuser/{id}
+    defaults: { _controller: ApiRestBundle:Default:detailuser }
+    requirements:
+      id: '\d+'
+api_rest_detailcleusers:
+    path:     /detailcleusers/{id}
+    defaults: { _controller: ApiRestBundle:Default:detailcleusers }
+    requirements:
+      id: '\d+'
+api_rest_detailusercles:
+    path:     /detailusercles/{id}
+    defaults: { _controller: ApiRestBundle:Default:detailusercles }
+    requirements:
+      id: '\d+'
+api_rest_search:    
+    path:     /searchuser
+    defaults: { _controller: ApiRestBundle:Default:searchuser }
+    

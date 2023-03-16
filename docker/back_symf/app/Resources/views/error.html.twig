@@ -1,0 +1,17 @@
+{% include 'base.html.twig' %}
+{% block body %}
+<link rel="stylesheet" href="{{ asset('css/style_etat.css') }}" type="text/css"/>
+<tbody>
+  <h1>{{title}}</h1>
+  <p>{{ message }}</p>
+  {% if errorcode == 1452 %}
+  <p>Erreur {{errorcode}} : Veuiller renseigner tous les champs</p>
+  {% elseif errorcode == 1048%}
+    <p>Erreur {{errorcode}} : Veuiller renseigner tous les champs</p>
+    {% elseif errorcode == 1451 %}
+      <p>Erreur {{errorcode}} : Il reste des entités associé a celle ci</p>
+  {% endif %}
+</tbody>
+<br>
+{% endblock %}
+{% include 'footer.html.twig' %}

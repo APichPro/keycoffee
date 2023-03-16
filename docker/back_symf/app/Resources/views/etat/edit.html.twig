@@ -1,0 +1,37 @@
+{% include 'base.html.twig' %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{{ asset('css/style_etat.css') }}" type="text/css"/>
+
+    <h1>Edition de l'état n° {{etat.id}}</h1>
+
+    <div id="container">
+
+    {{ form_start(edit_form) }}
+    <div class="form-box">
+        <div class="form-label">
+            {{ form_label(edit_form.causeArret) }} :
+        </div>
+        <div class="form-widget">
+            {{ form_widget(edit_form.causeArret) }}
+        </div>
+    </div>
+
+    </div>
+
+    <div class="form-box">
+        <input id="boutton" type="submit" value="Modifier" />
+        {{ form_end(edit_form) }}
+    </div>
+    <br>
+    <div class="form-box">
+        {{ form_start(delete_form) }}
+        <input id="boutton" type="submit" value="Supprimer cet état" onclick="if(!confirm('Etes vous sure de vouloir supprimer cet état ?')) { return false; }" >
+        {{ form_end(delete_form) }}
+    </div>
+
+        <br>
+        <a href="{{ path('etat_index') }}"><input id="boutton" type="button" value="Revenir a la liste"></a>
+{% endblock %}
+{% include 'footer.html.twig' %}

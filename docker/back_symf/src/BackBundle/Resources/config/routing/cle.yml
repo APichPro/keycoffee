@@ -1,0 +1,31 @@
+cle_index:
+    path:     /
+    defaults: { _controller: "BackBundle:Cle:showall" }
+    methods:  GET
+
+cle_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackBundle:Cle:show" }
+    methods:  GET
+
+cle_new:
+    path:     /new
+    defaults: { _controller: "BackBundle:Cle:new" }
+    methods:  [GET, POST]
+
+cle_newForUser:
+    path:     /new/{id}
+    defaults: { _controller: "BackBundle:Cle:new" }
+    methods:  [GET, POST]
+    requirements:
+      id: '\d+'
+
+cle_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackBundle:Cle:edit" }
+    methods:  [GET, POST]
+
+cle_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackBundle:Cle:delete" }
+    methods:  DELETE

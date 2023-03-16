@@ -1,0 +1,18 @@
+
+ <h1>Clé associé</h1>
+ <br>
+ <table>
+ <tr>
+ <td>Numero de Clé</td><td>montant Initial</td><td>Commentaire</td><td>Etat</td><td>Date d'affectation</td><td>Date de Suppression</td>
+ </tr>
+
+ <tr *ngFor="let cles of valueRetour">
+
+   <td>{{ cles.numCle }}</td>
+   <td>{{ cles.montantInitial }}</td>
+   <td>{{ cles.commentaire }}</td>
+   <td>{{ cles.etat }}</td>
+   <td>{{ cles.dateAffectation.date | date :'d/M/y H:m:s' }}</td>
+   <td>{{ cles.dateSuppression.date | date :'d/M/y H:m:s' }}</td>
+ </tr>
+</table>

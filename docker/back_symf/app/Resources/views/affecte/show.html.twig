@@ -1,0 +1,46 @@
+{% include 'base.html.twig' %}
+{% block body %}
+
+<link rel="stylesheet" href="{{ asset('css/style_user_show.css') }}" type="text/css"/>
+    <h1>Détails de l'affectation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+              <th>Identifiant</th>
+              <td>{{affecte.id}}</td>
+            </tr>
+            <tr>
+                <th>Date affectation</th>
+                <td>{% if affecte.dateAffectation %}{{ affecte.dateAffectation|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Date Suppression</th>
+                <td>{% if affecte.dateSuppression %}{{ affecte.dateSuppression|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Creation</th>
+                <td>{% if affecte.created %}{{ affecte.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Mise a jour</th>
+                <td>{% if affecte.updated %}{{ affecte.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+              <th>Clé</th>
+              <td>{{affecte.numCle}}</td>
+            </tr>
+            <tr>
+              <th>User</th>
+              <td>{{affecte.nom }}  {{ affecte.prenom}}</td>
+            </tr>
+        </tbody>
+            </table>
+            <br>
+            <a href="{{ path('affecte_index') }}" > <input id="boutton" id="margin" type="button" value="Revenir à la liste"></a>
+            <br><br>
+            <a href="{{ path('affecte_edit', { 'id': affecte.id }) }}" > <input id="boutton" type="button" value="Modifier"></a>
+
+
+{% endblock %}
+{% include 'footer.html.twig' %}

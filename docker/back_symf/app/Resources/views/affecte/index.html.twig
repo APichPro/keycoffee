@@ -1,0 +1,36 @@
+{% include 'base.html.twig' %}
+{% block body %}
+<link rel="stylesheet" href="{{ asset('css/style_user.css') }}" type="text/css"/>
+    <h1>Listes des affectations</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Date d'affectation</th>
+                <th>Date de fin de l'affectation</th>
+                <th>Clé affecté</th>
+                <th>Utilisateur</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for affecte in affectes %}
+            <tr>
+                <td>{% if affecte.dateAffectation %}{{ affecte.dateAffectation|date('d/m/Y') }}{% endif %}</td>
+                <td>{% if affecte.dateSuppression %}{{ affecte.dateSuppression|date('d/m/Y') }}{% endif %}</td>
+                <td>{{affecte.numCle}}</td>
+                <td>{{affecte.nom}}  {{affecte.prenom}}</td>
+                <td>
+        <ul>
+            <a href="{{ path('affecte_show', { 'id': affecte.id }) }}" > <input class="boutton_1" id="margin" type="button" value="Plus de détails"></a>
+            <a href="{{ path('affecte_edit', { 'id': affecte.id }) }}" > <input class="boutton_1" type="button" value="Modifier"></a>
+        </ul>
+    </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{{ path('affecte_new') }}"><input id="boutton" type="button" value="Créer une nouvelle affectation"></a>
+
+{% endblock %}
+{% include 'footer.html.twig' %}

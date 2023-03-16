@@ -1,0 +1,56 @@
+{% include 'base.html.twig' %}
+<link rel="stylesheet" href="{{ asset('css/style_affecte.css') }}" type="text/css"/>
+{% block body %}
+    <h1>Creation d'affectation</h1>
+
+    <div id="container">
+
+    {{ form_start(form) }}
+    <div class="form-box">
+        <div class="form-label">
+            {{ form_label(form.dateAffectation) }} :
+        </div>
+        <div class="form-widget">
+            {{ form_widget(form.dateAffectation) }}
+        </div>
+    </div>
+
+    <div class="form-box">
+        <div class="form-label">
+            {{ form_label(form.dateSuppression) }} :
+        </div>
+        <div class="form-widget">
+            {{ form_widget(form.dateSuppression) }}
+        </div>
+    </div>
+
+    <div class="form-box">
+        <div class="form-label">
+            {{ form_label(form.idCle) }} :
+        </div>
+        <div class="form-widget">
+            {{ form_widget(form.idCle) }}
+        </div>
+    </div>
+
+    <div class="form-box">
+        <div class="form-label">
+            {{ form_label(form.idUser) }} :
+        </div>
+        <div class="form-widget">
+            {{ form_widget(form.idUser) }}
+        </div>
+    </div>
+
+    </div>
+
+    <div class="form-box">
+        <input id="boutton" type="submit" value="Créer cette affectation" />
+        {{ form_end(form) }}
+    </div>
+
+            <br>
+        <a href="{{ path('affecte_index') }}"><input id="boutton" type="button" value="Revenir a la liste"></a>
+
+{% endblock %}
+{% include 'footer.html.twig' %}

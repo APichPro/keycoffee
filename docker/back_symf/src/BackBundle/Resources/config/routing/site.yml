@@ -1,0 +1,31 @@
+site_index:
+    path:     /
+    defaults: { _controller: "BackBundle:Site:showall" }
+    methods:  GET
+
+site_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackBundle:Site:show" }
+    methods:  GET
+
+site_new:
+    path:     /new
+    defaults: { _controller: "BackBundle:Site:new" }
+    methods:  [GET, POST]
+
+site_newForSite:
+    path:     /new/{id}
+    defaults: { _controller: "BackBundle:Site:new" }
+    methods:  [GET, POST]
+    requirements:
+      id: '\d+'
+
+site_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackBundle:Site:edit" }
+    methods:  [GET, POST]
+
+site_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackBundle:Site:delete" }
+    methods:  DELETE

@@ -1,0 +1,25 @@
+<br>
+<h1>Détails de la clé</h1>
+<br>
+ <table>
+ <tr>
+ <td>Numero de clé</td><td>Date de Creation</td><td>Date d'arrèt</td><td>Montant Initial</td>
+ <td>Commentaire</td><td>Creation</td><td>Mise a jour</td><td>Etat</td>
+ </tr>
+ <tr *ngFor="let js of valueRetour">
+ <td>{{ js.numCle }}</td>
+ <td>{{ js.dateCreation.date | date :'d/M/y H:m' }}</td>
+ <td>{{ js.dateArret.date | date :'d/M/y H:m' }}</td>
+ <td>{{ js.montantInitial }} €</td>
+ <td>{{ js.commentaire }}</td>
+ <td>{{ js.created.date | date :'d/M/y H:m:s' }}</td>
+ <td>{{ js.updated.date | date :'d/M/y H:m:s' }}</td>
+ <td>{{ js.etat }}</td>
+
+ </tr>
+</table>
+<!-- Appel du composant detailcleusers -->
+<detailcleusers>Utilisateur associé</detailcleusers>
+
+ <br>
+    <a routerLink='../../recupdata' > <input id="boutton" type="button" value="Retour à la liste"></a>

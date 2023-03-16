@@ -1,0 +1,74 @@
+{% include 'base.html.twig' %}
+
+{% block body %}
+   <link rel="stylesheet" href="{{ asset('css/style_cle.css') }}" type="text/css"/>
+
+    <h1>Création de clé</h1>
+
+    <div id="container">
+
+    {{ form_start(form) }}
+    <div class="form-box">
+        <div class="form-label">
+            {{ form_label(form.numCle) }} :
+        </div>
+        <div class="form-widget">
+            {{ form_widget(form.numCle) }}
+        </div>
+    </div>
+
+    <div class="form-box">
+        <div class="form-label">
+            {{ form_label(form.dateCreation) }} :
+        </div>
+        <div class="form-widget">
+            {{ form_widget(form.dateCreation) }}
+        </div>
+    </div>
+
+    <div class="form-box">
+        <div class="form-label">
+            {{ form_label(form.dateArret) }} :
+        </div>
+        <div class="form-widget">
+            {{ form_widget(form.dateArret) }}
+        </div>
+    </div>
+
+    <div class="form-box">
+        <div class="form-label">
+            {{ form_label(form.montantInitial) }} :
+        </div>
+        <div class="form-widget">
+            {{ form_widget(form.montantInitial) }}
+        </div>
+    </div>
+
+    <div class="form-box">
+        <div class="form-label">
+            {{ form_label(form.commentaire) }} :
+        </div>
+        <div class="form-widget">
+            {{ form_widget(form.commentaire) }}
+        </div>
+    </div>
+
+    <div class="form-box">
+        <div class="form-label">
+            {{ form_label(form.idEtat) }} :
+        </div>
+        <div class="form-widget">
+            {{ form_widget(form.idEtat) }}
+        </div>
+    </div>
+
+    </div>
+    <div class="form-box">
+        <input id="boutton" type="submit" value="Crée cette clé" />
+        {{ form_end(form) }}
+    </div>
+
+    <br>
+        <a href="{{ path('cle_index') }}"><input id="boutton" type="button" value="Revenir a la liste"></a>
+{% endblock %}
+{% include 'footer.html.twig' %}

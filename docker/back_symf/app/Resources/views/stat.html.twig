@@ -1,0 +1,146 @@
+{% include 'base.html.twig' %}
+{% block body %}
+
+<link rel="stylesheet" href="{{ asset('css/style_etat.css') }}" type="text/css"/>
+    <h1>Nombre d'utilisateur</h1>
+
+    <table class="list">
+        <thead>
+            <tr>
+                <th>Nombre de Utilisateurs totaux</th>
+                <th>Nombre de Utilisateur actif</th>
+                <th>Nombre de Utilisateur inactif</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ nbuser }}</td>
+                <td>{{ nbuseractif }}</td>
+                <td>{{ nbuserinactif }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <h1>Nombre de clé</h1>
+
+    <table class="list">
+        <thead>
+            <tr>
+                <th>Nombre de Cles totales</th>
+                <th>Nombre de Cle active</th>
+                <th>Nombre de Cle inactive</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ nbcle }}</td>
+                <td>{{ nbcleactif }}</td>
+                <td>{{ nbcleinactif }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h1>Nombre de clé par type d'utilisateur</h1>
+
+    <table class="list">
+
+        <thead>
+          <tr>
+          {% for nbclebytype in nbclebytypes %}
+          <th>{{nbclebytype.typeUser}}</th>
+          {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          {% for nbclebytype in nbclebytypes %}
+            <td>
+            {{nbclebytype.nb}}
+            </td>
+            {% endfor %}
+            </tr>
+
+        </tbody>
+
+    </table>
+
+        <h1>Nombre de clé par sites</h1>
+
+    <table class="list">
+
+        <thead>
+          <tr>
+          {% for nbclebysite in nbclebysites %}
+          <th>{{nbclebysite.site}}</th>
+          {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          {% for nbclebysite in nbclebysites %}
+            <td>
+            {{nbclebysite.nb}}
+            </td>
+            {% endfor %}
+            </tr>
+
+        </tbody>
+
+    </table>
+
+<div class = "mensuelle">
+    <h1>Nombre de clé par Mois</h1>
+
+<table >
+
+    <thead>
+      <tr>
+      {% for clemensuel in clemensuels %}
+      <th class= "case">{{clemensuel.da}}/{{clemensuel.ye}}</th>
+      {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      {% for clemensuel in clemensuels %}
+        <td class= "case">
+        {{clemensuel.nb}}
+        </td>
+        {% endfor %}
+        </tr>
+
+    </tbody>
+
+</table>
+</div>
+
+<h1>Nombre d' Utilisateurs par Mois</h1>
+
+<table class="list">
+
+<thead>
+  <tr>
+  {% for usermensuel in usermensuels %}
+  <th>{{usermensuel.da}}/{{usermensuel.ye}}</th>
+  {% endfor %}
+  </tr>
+</thead>
+<tbody>
+  <tr>
+  {% for usermensuel in usermensuels %}
+    <td>
+    {{usermensuel.nb}}
+    </td>
+    {% endfor %}
+    </tr>
+
+</tbody>
+
+</table>
+
+    <ul>
+    </ul>
+
+
+{% endblock %}
+{% include 'footer.html.twig' %}

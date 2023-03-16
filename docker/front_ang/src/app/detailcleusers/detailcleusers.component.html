@@ -1,0 +1,19 @@
+
+ <h1>Utilisateur associé</h1>
+ <br>
+ <table>
+ <tr>
+ <td>Nom</td><td>Prenom</td><td>Actif</td><td>Type d'Utilisateur</td><td>Localisation</td><td>Date d'affectation</td><td>Date de suppression</td>
+ </tr>
+
+ <tr *ngFor="let users of valueRetour">
+
+   <td>{{ users.nom }}</td>
+   <td>{{ users.prenom }}</td>
+   <td>{{ users.actif }}</td>
+   <td>{{ users.typeUser }}</td>
+   <td>{{ users.site }}</td>
+   <td>{{ users.dateAffectation.date | date :'d/M/y H:m' }}</td>
+   <td>{{ users.dateSuppression.date | date :'d/M/y H:m' }}</td>
+ </tr>
+</table>

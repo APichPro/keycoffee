@@ -1,0 +1,24 @@
+back_homepage:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
+back_stat:
+    path:     /stat
+    defaults: { _controller: BackBundle:Statistique:stat }
+back_cle:
+    resource: "@BackBundle/Resources/config/routing/cle.yml"
+    prefix:   /cle
+back_user:
+    resource: "@BackBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+back_etat:
+    resource: "@BackBundle/Resources/config/routing/etat.yml"
+    prefix:   /etat
+back_site:
+    resource: "@BackBundle/Resources/config/routing/site.yml"
+    prefix:   /site
+back_affecte:
+    resource: "@BackBundle/Resources/config/routing/affecte.yml"
+    prefix:   /affecte
+back_typeuser:
+    resource: "@BackBundle/Resources/config/routing/typeuser.yml"
+    prefix:   /typeuser

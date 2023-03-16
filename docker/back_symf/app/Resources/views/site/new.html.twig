@@ -1,0 +1,31 @@
+{% include 'base.html.twig' %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{{ asset('css/style_etat.css') }}" type="text/css"/>
+
+    <h1>Création d'un nouveau site</h1>
+
+    <div id="container">
+
+    {{ form_start(form) }}
+    <div class="form-box">
+        <div class="form-label">
+            {{ form_label(form.site) }} :
+        </div>
+        <div class="form-widget">
+            {{ form_widget(form.site) }}
+        </div>
+    </div>
+
+    </div>
+
+    <div class="form-box">
+        <input id="boutton" type="submit" value="Créer ce site" />
+        {{ form_end(form) }}
+    </div>
+
+        <br>
+        <a href="{{ path('site_index') }}"><input id="boutton" type="button" value="Revenir a la liste"></a>
+{% endblock %}
+{% include 'footer.html.twig' %}

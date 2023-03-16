@@ -1,0 +1,24 @@
+
+<br>
+    <h1>Utilisateur</h1>
+ <table>
+ <tr>
+ <td>Nom</td><td>Prenom</td><td>Etat</td><td>Creation</td>
+ <td>Mise a jour</td><td>Type d'utilisateur</td><td>Site</td>
+ </tr>
+
+ <tr *ngFor="let js of valueRetour">
+ <td>{{ js.nom }}</td>
+ <td>{{ js.prenom }}</td>
+ <td>{{ js.actif }}</td>
+ <td>{{ js.created.date | date :'d/M/y H:m:s' }}</td>
+ <td>{{ js.updated.date | date :'d/M/y H:m:s' }}</td>
+ <td>{{ js.typeUser }}</td>
+ <td>{{ js.site }}</td>
+ </tr>
+
+</table>
+<!-- Appel du composant detailusercles -->
+ <detailusercles>Utilisateur associé</detailusercles>
+ <br>
+ <a routerLink='../../listeuser' > <input id="boutton" type="button" value="Retour à la liste"></a>
