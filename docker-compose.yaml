@@ -4,7 +4,7 @@ services:
         build: docker/apache
         container_name: sf4_apache
         ports:
-          - 82:80
+          - 82:82
         volumes:
           - ./docker/config/vhosts:/etc/apache2/sites-enabled
           - ./docker/back_symf:/home/wwwroot/sf4
@@ -42,7 +42,7 @@ services:
         container_name: sf4_phpmyadmin
         restart: always
         ports:
-            - 8080:80
+            - 8080:8080
         links:
             - mysql
         environment:
@@ -60,7 +60,7 @@ services:
       volumes:
         - ./docker/front_ang/dist/Angular:/usr/share/nginx/html
       ports:
-        - "81:80"
+        - "81:81"
         - "443:443"
       
     node:
