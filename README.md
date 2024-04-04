@@ -9,6 +9,9 @@ This project was built using these technologies and languages.
 
 - Symfony
 - Angular
+- Docker
+- MySql
+- Nginx
 
 ## About Me
 
