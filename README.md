@@ -7,8 +7,8 @@ KeyCoffee is a scholar project of coffee machine management website.
 
 This project was built using these technologies and languages.
 
-- Symfony
-- Angular
+- Symfony 4
+- Angular 8
 - Docker
 - MySql
 - Nginx
